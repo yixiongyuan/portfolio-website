@@ -7,6 +7,7 @@ import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
+import Slider from './components/Slider';
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <NavBar/>
       <Home />
       <SocialLinks />
-      <About />
       <Portfolio />
+      <Slider/>
       <Experience />
       <Contact />
+      <About />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import HeroImage from '../assets/heroImage.jpg';
 import {MdOutlineKeyboardArrowRight} from "react-icons/md"
+import Portfolio from './Portfolio';
+import { Link } from "react-scroll";
 
 function Home() {
   return (
@@ -15,16 +17,21 @@ function Home() {
                 I'm a Graduated student from NYU with master degree of computer engineering pursuing a full-time software engineer position.
                 </p>
                 <div>
-                    <button
-                        className='group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r
-                        from-cyan-500 to-blue-500'
+                    <Link 
+                        to='portfolio'
+                        smooth 
+                        duration={500}
                     >
-                        Portfolio
-                        <span className='ml-1 group-hover:rotate-90 duration-300'>
-                        <MdOutlineKeyboardArrowRight size={25} />    
-                        </span>
-                        
-                    </button>
+                        <button
+                            className='group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r
+                            from-cyan-500 to-blue-500'
+                        >
+                                Portfolio
+                                <span className='ml-1 group-hover:rotate-90 duration-300'>
+                                <MdOutlineKeyboardArrowRight size={25} />    
+                                </span>
+                        </button>
+                    </Link>
                 </div>
             </div>
 
