@@ -6,31 +6,31 @@ function Slider() {
   const sliders = [
     {
       id: 1,
-      src: "/daily/birdland_theater.jpg",
+      src: "http://localhost:3001/daily/birdland_theater.jpg",
       title: "HTML",
       text: "Birdland Theather : Jazz Show",
     },
     {
       id: 2,
-      src: "/daily/washington_DC.jpg",
+      src: "http://localhost:3001/daily/washington_DC.jpg",
       title: "HTML",
       text: "Washington DC Sakura",
     },
     {
       id: 3,
-      src: "/daily/dragon_boat_festival.jpg",
+      src: "http://localhost:3001/daily/dragon_boat_festival.jpg",
       title: "HTML",
       text: "Rice Dumpling",
     },
     {
       id: 4,
-      src: "/daily/moma.jpg",
+      src: "http://localhost:3001/daily/moma.jpg",
       title: "HTML",
       text: "Museum of Modern Art",
     },
     {
       id: 5,
-      src: "/daily/sixflag.jpg",
+      src: "http://localhost:3001/daily/sixflag.jpg",
       title: "HTML",
       text: "Six Flag : Happy Children's Day",
     },
