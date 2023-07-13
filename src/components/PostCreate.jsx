@@ -1,6 +1,68 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
+import Post from "../models/Post";
 
 function PostCreate() {
+  const [httpError, setHttpError] = useState(null);
+
+  //message endpoint state
+  const [title, setTitle] = useState("");
+  const [location, setLocation] = useState("");
+  const [date, setDate] = useState("");
+  const [img, setImg] = useState(null);
+
+  const fileInputRef = useRef();
+  //display
+  const [displayWarning, setDisplayWarning] = useState(false);
+  const [displaySuccess, setDisplaySuccess] = useState(false);
+
+  useEffect(() => {
+    if (fileInputRef) {
+      fileInputRef.current.value = null;
+    }
+  }, [img]);
+
+  async function submitNewPost() {
+    //const url = `${process.env.REACT_APP_API}/admin/secure/add/book`;
+
+    const url = "http://localhost:3001/api/posts";
+
+    if (title !== "" && location !== "" && date !== "") {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("date", date);
+      formData.append("location", location);
+      formData.append("image", img);
+
+      const requestOptions = {
+        method: "POST",
+        body: formData,
+      };
+
+      const submitNewPostResponse = await fetch(url, requestOptions);
+
+      //console.log(submitNewPostResponse);
+
+      if (!submitNewPostResponse.ok) {
+        throw new Error("Something went wrong");
+      }
+
+      setTitle("");
+      setLocation("");
+      setDate("");
+      setImg(null);
+
+      //   setDisplayWarning(false);
+      //   setDisplaySuccess(true);
+      // } else {
+      //   setDisplayWarning(true);
+      //   setDisplaySuccess(false);
+      // }
+
+      window.location.href = "/";
+    }
+  }
+
   return (
     <div
       name="postcreate"
@@ -12,37 +74,57 @@ function PostCreate() {
             Post Create
           </p>
           <p className="py-6 text-2xl">
-            Submit the form below to get in touch with me
+            Submit the form to update new activity
           </p>
         </div>
 
         <div className=" flex justify-center items-center">
-          <form
-            action="https://getform.io/f/61c99527-2b15-42cf-9b55-ad37d2f7daa6"
-            method="POST"
-            className=" flex flex-col w-full md:w-1/2"
-          >
+          <form method="POST" className=" flex flex-col w-full md:w-1/2">
             <input
               type="text"
-              name="name"
-              placeholder="Enter your name"
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            />
-            <input
-              type="text"
-              name="email"
-              placeholder="Enter your email"
+              name="title"
+              placeholder="Enter title"
+              required
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
               className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             />
-            <textarea
-              name="message"
-              placeholder="Enter your message"
-              rows="10"
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            ></textarea>
 
-            <button className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300">
-              Let's talk
+            <input
+              type="date"
+              name="time"
+              placeholder="Enter activity time"
+              required
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+              className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
+            />
+
+            <input
+              type="text"
+              name="location"
+              placeholder="Enter location"
+              required
+              onChange={(e) => setLocation(e.target.value)}
+              value={location}
+              className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
+            />
+
+            <input
+              type="file"
+              name="img"
+              placeholder="Enter your photo"
+              onChange={(e) => setImg(e.target.files[0])}
+              ref={fileInputRef}
+              className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
+            ></input>
+
+            <button
+              type="button"
+              className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300"
+              onClick={submitNewPost}
+            >
+              Create
             </button>
           </form>
         </div>

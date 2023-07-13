@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
-  time: { type: Date, required: true },
+
+  title: { type: String, required: true },
   location: { type: String, required: true },
-  content: { type: String, required: true },
+  time: { type: Date, required: true },
   imagePath: { type: String, required: true },
 
 });
