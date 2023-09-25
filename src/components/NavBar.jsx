@@ -16,24 +16,24 @@ function NavBar() {
     },
     {
       id: 3,
-      link: "dailyAlbum",
+      link: "Photo Album",
     },
     {
       id: 4,
-      link: "contact",
+      link: "experience",
     },
-    // {
-    //   id: 5,
-    //   link: "experience",
-    // },
     {
       id: 5,
+      link: "contact",
+    },
+    {
+      id: 6,
       link: "about",
     },
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-20 text-white bg-black fixed ">
+    <div className="flex justify-between items-center w-full h-20 text-white bg-black z-100 fixed">
       <div>
         <h1 className="text-5xl font-signature ml-2">Zachary</h1>
       </div>
@@ -54,13 +54,13 @@ function NavBar() {
       {/* mobile view */}
       <div
         onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-10 text-gray-300 md:hidden"
+        className="cursor-pointer pr-4 text-gray-300 md:hidden"
       >
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
 
       {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-400">
+        <ul className="flex flex-col justify-center items-center z-100 absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-400">
           {links.map(({ id, link }) => (
             <li
               key={id}

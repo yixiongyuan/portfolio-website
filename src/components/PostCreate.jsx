@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import Post from "../models/Post";
+import { Link } from "react-router-dom";
 
 function PostCreate() {
   const [httpError, setHttpError] = useState(null);
@@ -25,7 +26,9 @@ function PostCreate() {
   async function submitNewPost() {
     //const url = `${process.env.REACT_APP_API}/admin/secure/add/book`;
 
-    const url = "http://localhost:3001/api/posts";
+    const url =
+      "http://zachary-portfolio-env.eba-ts8rqyug.us-east-1.elasticbeanstalk.com/api/posts";
+    //const url = "http://localhost:3001/api/posts";
 
     if (title !== "" && location !== "" && date !== "") {
       const formData = new FormData();
@@ -66,7 +69,8 @@ function PostCreate() {
   return (
     <div
       name="postcreate"
-      className="w-full h-screen bg-gradient-to-b from-gray-800 to-black p-4 text-white"
+      className="w-full h-screen
+       bg-gradient-to-b from-gray-800 to-black p-4 text-white"
     >
       <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
         <div className="pb-8">
@@ -76,6 +80,12 @@ function PostCreate() {
           <p className="py-6 text-2xl">
             Submit the form to update new activity
           </p>
+          <button
+            type="button"
+            className=" text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 rounded-md hover:scale-110 duration-300"
+          >
+            <Link to="/">Back</Link>
+          </button>
         </div>
 
         <div className=" flex justify-center items-center">
@@ -121,7 +131,7 @@ function PostCreate() {
 
             <button
               type="button"
-              className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300"
+              className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 mt-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300"
               onClick={submitNewPost}
             >
               Create

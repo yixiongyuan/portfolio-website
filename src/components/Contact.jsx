@@ -4,10 +4,10 @@ function Contact() {
   return (
     <div
       name="contact"
-      className="w-full h-screen mb-0 bg-gradient-to-b from-black to-gray-800 p-4 text-white"
+      className="w-full h-full mb-0 bg-gradient-to-b from-gray-900 to-gray-950 p-4 text-white"
     >
       <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
-        <div className="pb-8">
+        <div className="pb-8 text-center md:text-left">
           <p className="text-6xl font-bold inline border-b-4 border-gray-500">
             Contact
           </p>
@@ -18,7 +18,7 @@ function Contact() {
 
         <div className=" flex justify-center items-center">
           <form
-            action="https://getform.io/f/61c99527-2b15-42cf-9b55-ad37d2f7daa6"
+            action="https://getform.io/f/de86a487-98e2-4357-8cf1-b75bb400a492"
             method="POST"
             className=" flex flex-col w-full md:w-1/2"
           >
@@ -26,6 +26,7 @@ function Contact() {
               type="text"
               name="name"
               placeholder="Enter your name"
+              required
               className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             />
             <input
@@ -38,6 +39,7 @@ function Contact() {
               name="message"
               placeholder="Enter your message"
               rows="10"
+              required
               className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             ></textarea>
 

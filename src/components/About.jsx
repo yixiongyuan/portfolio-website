@@ -49,20 +49,18 @@ function About() {
   return (
     <div
       name="about"
-      className="w-full h-1/3  mt-0 bg-gradient-to-b from-gray-800 to-black text-white"
+      className="w-full h-1/3  mt-0 bg-gradient-to-b from-gray-950 to-black text-white"
     >
       <div className="max-w-screen-lg mx-auto flex flex-col justify-center w-full h-full">
         <p className="text-6xl text-center font-bold inline mb-5">About</p>
         <div className="border-b-4 border-gray-500"></div>
+
         <p className="text-2xl  mt-5 w-full text-center">
-          This website is built by react JS as a personal training project.
+          This website is a full-stack web application.
           <br />
           <br />
-          I am now working with adding backend and database storation.
-          <br />
-          <br />
-          There will be more blocks and functions displayed.
-          <Link to="/create">Test</Link>
+          Component: React.js + Node.js + MongoDB + AWS deployment
+          <Link to="/create">.</Link>
         </p>
       </div>
 
@@ -78,6 +76,11 @@ function About() {
           </li>
         ))}
       </ul>
+
+      <div className="w-full text-center pb-5">
+        {" "}
+        Copyright © Zachary Website
+      </div>
     </div>
   );
 }

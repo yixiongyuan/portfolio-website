@@ -29,7 +29,10 @@ function PostDisplay() {
   useEffect(() => {
     const fetchPosts = async () => {
       // const baseUrl: string = `${process.env.REACT_APP_API}/books`;
-      const baseUrl = "http://localhost:3001/api/posts";
+
+      const baseUrl =
+        "http://zachary-portfolio-env.eba-ts8rqyug.us-east-1.elasticbeanstalk.com/api/posts";
+      //const baseUrl = "http://localhost:3001/api/posts";
 
       let url = "";
 
@@ -130,39 +133,6 @@ function PostDisplay() {
     setcurrentPage(pageNumber);
   };
 
-  const sliders = [
-    {
-      id: 1,
-      src: "http://localhost:3001/daily/birdland_theater.jpg",
-      title: "HTML",
-      text: "Birdland Theather : Jazz Show",
-    },
-    {
-      id: 2,
-      src: "http://localhost:3001/daily/washington_DC.jpg",
-      title: "HTML",
-      text: "Washington DC Sakura",
-    },
-    {
-      id: 3,
-      src: "http://localhost:3001/daily/dragon_boat_festival.jpg",
-      title: "HTML",
-      text: "Rice Dumpling",
-    },
-    {
-      id: 4,
-      src: "http://localhost:3001/daily/moma.jpg",
-      title: "HTML",
-      text: "Museum of Modern Art",
-    },
-    {
-      id: 5,
-      src: "http://localhost:3001/daily/sixflag.jpg",
-      title: "HTML",
-      text: "Six Flag : Happy Children's Day",
-    },
-  ];
-
   const prevSlide = () => {
     const isFirst = index === 0;
 
@@ -185,29 +155,30 @@ function PostDisplay() {
 
   return (
     <div
-      name="dailyAlbum"
-      className="bg-gradient-to-b from-black to-gray-800 w-full h-full text-white md:h-screen"
+      name="Photo Album"
+      className=" pt-20 bg-gradient-to-b from-gray-900 to-gray-800 w-full h-screen text-white md:h-screen"
     >
-      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
-        <div className="pb-4">
+      <div className="flex flex-col justify-center max-w-screen-lg mx-auto h-full p-4">
+        <div className="md:pb-2 text-center md:text-left">
           <p className="text-6xl font-bold inline border-b-4 border-gray-500">
-            Daily Album
+            Photo Album
           </p>
-          <p className="py-6 text-2xl">
-            Check out some snapshots from daily life activites
-          </p>
+          <p className="pt-6 text-2xl">Display the snapshots of daily life</p>
         </div>
 
-        {isLoading ? (
+        {isLoading || posts.length === 0 ? (
           <></>
         ) : (
-          <div className=" w-full h-screen m-auto py-4 px-0 group relative">
+          <div className=" w-full h-full m-auto pt-2 md:py-4 px-0 md:mb-5 group relative">
             <div
               style={{ backgroundImage: `url(${posts[index].imagePath})` }}
-              className="w-full h-full rounded-2xl bg-center bg-cover bg-no-repeat"
+              className="mt-0 w-full h-full rounded-2xl bg-center bg-contain md:bg-cover bg-no-repeat z-0 relative"
             >
-              <div class="hidden group-hover:block absolute bottom-0 px-4 py-3 my-4 rounded-b-2xl bg-gray-500/60 w-full text-3xl">
-                <h1 class="text-white font-semibold text-4xl mb-2 mt-0 capitalize">
+              <div
+                class="hidden group-hover:block absolute bottom-0 px-4 md:py-3 
+              rounded-b-2xl bg-gray-500/60 w-full text-xl md:text-3xl"
+              >
+                <h1 class="text-white font-semibold text-2xl md:text-4xl mb-1 md:mb-2 mt-0 capitalize">
                   {posts[index].title}
                 </h1>
                 <p class="text-gray-200 italic capitalize">
